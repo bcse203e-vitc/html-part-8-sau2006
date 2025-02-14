@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>dynamic font adjuster</title>
+</head>
+<body>
+  <h1>font size adjuster</h1>
+  <p id="text">demo demo demo demo demo demo demo</p>
+  <button onclick="changeFontSize('increase')">increase font size</button>
+  <button onclick="changeFontSize('decrease')">decrease font size</button>
+  <script>
+    let currentFontSize = 16; 
+    function changeFontSize(action) {
+      const textElement = document.getElementById('text');
+      if (action === 'increase') {
+        currentFontSize += 2; 
+      }
+      else if (action === 'decrease') {
+        currentFontSize -= 2;
+      }
+      textElement.style.fontSize = currentFontSize + 'px';
+    }
+  </script>
+</body>
+</html>

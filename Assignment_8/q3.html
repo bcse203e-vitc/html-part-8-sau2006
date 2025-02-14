@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>image carousel</title>
+  <style>
+    .carousel-container {
+      position: relative;
+      width: 600px;
+      margin: auto;
+      overflow: hidden;
+    }
+    .carousel-images {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .carousel-images img {
+      width: 600px;
+      height: 400px;
+    }
+    .button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    }
+    .prev {
+      left: 0;
+    }
+    .next {
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="carousel-container">
+    <div class="carousel-images">
+      <img src="https://via.placeholder.com/600x400?text=Image+1https://i0.wp.com/cedars.cedarville.edu/wp/wp-content/uploads/2024/01/Percy-Jackson-and-the-Olympians-publicity-H-2023.png?fit=1296%2C730&ssl=1" alt="1">
+      <img src="https://i0.wp.com/www.teilzeithelden.de/wp-content/uploads/2024/02/Percy-Jackson-Titelbild.jpg?fit=1068%2C580&ssl=1" alt="2">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl0-J8GFXsQgbTBILDKZBa4hgJqOu3seZNfDz0--kZHjbwcw-VlNVvOWfm4lleazVRVSs&usqp=CAU" alt="3">
+    </div>
+    <button class="button prev" onclick="prevSlide()">Previous</button>
+    <button class="button next" onclick="nextSlide()">Next</button>
+  </div>
+  <script>
+    let currentIndex = 0;
+    const images = document.querySelectorAll('.carousel-images img');
+    const totalImages = images.length;
+    function showSlide(index) {
+      const carousel = document.querySelector('.carousel-images');
+      carousel.style.transform = `translateX(-${index * 600}px)`;
+    }
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % totalImages;
+      showSlide(currentIndex);
+    }
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+      showSlide(currentIndex);
+    }
+    setInterval(nextSlide, 3000); 
+  </script>
+</body>
+</html>

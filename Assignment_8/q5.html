@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>word counter</title>
+</head>
+<body>
+  <h1>word counter</h1>
+  <textarea id="textArea" rows="6" cols="40" placeholder="Start typing..."></textarea><br><br>
+  <p>word count: <span id="wordCount">0</span></p>
+  <script>
+    const textArea = document.getElementById('textArea');
+    const wordCountDisplay = document.getElementById('wordCount');
+    textArea.addEventListener('input', function() {
+      const text = textArea.value.trim();
+      const wordCount = text.split(/\s+/).filter(Boolean).length;
+      wordCountDisplay.textContent = wordCount;
+    });
+  </script>
+</body>
+</html>
